@@ -37,9 +37,9 @@ public class FindWeather {
         try {
             //stabilisco la connessione con openWeather
             URL url = WeatherURL.generateURL(place);
-            //Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("192.168.0.1", 8080));
-            //URLConnection urlConnection = url.openConnection(proxy);
-            URLConnection urlConnection = url.openConnection();
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("192.168.0.1", 8080));
+            URLConnection urlConnection = url.openConnection(proxy);
+            //URLConnection urlConnection = url.openConnection();
             InputStream in = urlConnection.getInputStream();
             
             //creo il documento XML

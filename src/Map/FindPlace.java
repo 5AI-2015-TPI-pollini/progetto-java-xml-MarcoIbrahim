@@ -49,10 +49,10 @@ public class FindPlace {
         try {
             //stabilisco la connessione con openWeather
             URL url = new URL("https://maps.googleapis.com/maps/api/geocode/xml?address=" + URLEncoder.encode(location, "UTF-8"));
-            System.out.println(url);
-            //Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("192.168.0.1", 8080));
-            //URLConnection urlConnection = url.openConnection(proxy);
-            URLConnection urlConnection = url.openConnection();
+            
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("192.168.0.1", 8080));
+            URLConnection urlConnection = url.openConnection(proxy);
+            //URLConnection urlConnection = url.openConnection();
             InputStream in = urlConnection.getInputStream();
             
             //creo il documento XML
